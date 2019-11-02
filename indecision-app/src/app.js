@@ -1,6 +1,4 @@
-console.log('Transalting...')
-
-var template = <h1>This is a JSX statement</h1>;
+var template = < p > This is a JSX statement < /p>;
 
 var rootObj = document.getElementById('app');
 

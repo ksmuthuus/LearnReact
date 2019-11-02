@@ -11,4 +11,4 @@ b) Install presets
 yarn add babel-preset-env babel-preset-react
 
 3) Trasformation
-babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch
+babel src/app.js --out-file=public/scripts/app.js --preset=env,react --watch
