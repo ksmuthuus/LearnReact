@@ -20,8 +20,7 @@ class App extends React.Component {
         });
   }
 
-  render() {
-
+  getSeasonData(){
     if(this.state.errorMessage && !this.state.lat)
     return <div>Error: {this.state.errorMessage}</div>
 
@@ -29,6 +28,10 @@ class App extends React.Component {
     return <SeasonDisplay lat={this.state.lat}/>
 
     return <Spinner message='Please acccept location access'/>
+  }
+
+  render() {
+    return <div>{this.getSeasonData()}</div>;
 
   }
 }
