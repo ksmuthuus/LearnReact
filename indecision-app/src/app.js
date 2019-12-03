@@ -1,19 +1,20 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
+
 class IndecisionApp extends React.Component {
   render() {
-const data={
-  title:'Indecision',
-  subtitle:'Put your life in the hands of a computer',
-  options:['One', 'Two', 'Three']
-}
+    const data={
+      title:'Indecision',
+      subtitle:'Put your life in the hands of a computer',
+      options:['One', 'Two', 'Three']
+    }
 
-    return (
-      <div>
-        <Header title={data.title} subtitle={data.subtitle}/>
-        <Action />
-        <Options options={data.options}/>
-        <AddOption />
-      </div>
-    );
+    return (<div>
+    <Header title={data.title} subtitle={data.subtitle}/>
+    <Action />
+    <Options options={data.options}/>
+    <AddOption />
+  </div>)
   }
 }
 
@@ -24,7 +25,7 @@ class Header extends React.Component {
         <h1>{this.props.title}</h1>
         <h2>{this.props.subtitle}</h2>
       </div>
-    );
+    )
   }
 }
 
