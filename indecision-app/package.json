@@ -7,7 +7,7 @@
     "build": "webpack --watch",
     "dev": "webpack-dev-server",
     "build2": "babel src\\app.js --out-file=public\\scripts\\app.js --preset=env,react --watch",
-    "server": "live-server public/"
+    "server": "live-server public"
   },
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.7.4",
