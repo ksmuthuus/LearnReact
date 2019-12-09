@@ -6,8 +6,9 @@ class IndecisionApp extends React.Component {
     super(props)
     this.handleRemoveAllOptions = this.handleRemoveAllOptions.bind(this)
     this.handleSelectOption = this.handleSelectOption.bind(this)
+    this.hanldeAddoption = this.hanldeAddoption.bind(this)
     this.state={
-      options:['One', 'Two', 'Three','Four']
+      options: props.options
     }
   }
 
@@ -21,6 +22,22 @@ class IndecisionApp extends React.Component {
     const index = Math.floor((Math.random() * this.state.options.length))
     const option = this.state.options[index]
     alert(option)
+  }
+
+  hanldeAddoption(option){
+    if(!option){
+      return 'Provide valid option!'
+    }
+    else if(this.state.options.indexOf(option) > -1){
+      return 'Option already exists!'
+    }
+    
+    this.setState((prevState) => {
+      return{
+        options: prevState.options.concat(option)
+      }
+    })
+
   }
 
   render() {
@@ -39,9 +56,15 @@ class IndecisionApp extends React.Component {
       handleRemoveAllOptions={this.handleRemoveAllOptions} 
       options={this.state.options}
       />
-    <AddOption />
+    <AddOption 
+    hanldeAddoption={this.hanldeAddoption}
+    />
   </div>)
   }
+}
+
+IndecisionApp.defaultProps ={
+  options:['One', 'Two', 'Three']
 }
 
 class Header extends React.Component {
@@ -102,16 +125,33 @@ class Option extends React.Component {
 }
 
 class AddOption extends React.Component {
+
+constructor(props){
+  super(props)
+  this.hanldeAddoption = this.hanldeAddoption.bind(this)
+  this.state = {
+    error:undefined 
+  }
+}
+
   hanldeAddoption(e){
     e.preventDefault()
     const option = e.target.elements.option.value.trim()
-    alert(option)
+    const error = this.props.hanldeAddoption(option)
+    if(error){
+      this.setState(() => {
+        return{
+          error
+        }
+      })
+    }
   }
 
   render() {
     return (
       <div>
-        <form onSubmit={this.hanldeAddoption}>
+      {this.state.error && <p>{this.state.error}</p>}
+        <form onSubmit={this.hanldeAddoption}>     
           <input type='text' name='option'/>
           <button>Add option</button>
         </form>
@@ -120,4 +160,4 @@ class AddOption extends React.Component {
   }
 }
 
-ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
+ReactDOM.render(<IndecisionApp options={['Write code','Learn new stuff every day','Hurry up!']}/>, document.getElementById('app'));
