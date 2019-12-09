@@ -14,6 +14,27 @@ class Counter extends React.Component{
     }
   }
 
+  componentDidMount(){
+    let counter = localStorage.getItem('counter')
+    try{
+        counter = parseInt(counter,10)
+        if(!isNaN(counter)){
+          this.setState(() => ({counter}))
+        }
+    }
+    catch(err)
+    {
+      //Do Nothing
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    if(prevState.counter !== this.state.counter){
+      console.log('Backup Done!')
+      localStorage.setItem('counter',this.state.counter)
+    }
+  }
+
   handleIncrement() 
   {
     this.setState((prevState) => {
