@@ -3,21 +3,18 @@ import {createStore} from 'redux'
 const store = createStore((state={count:100}, action) => {
   switch(action.type){
     case 'INCREMENT':
-      const incrementBy = typeof action.incrementBy === 'number' ? action.incrementBy :1
       return{
-        count:state.count + incrementBy
+        count:state.count + action.incrementBy
       }
 
       case 'DECREMENT':
-        const decrementBy = !isNaN(action.decrementBy) ? action.decrementBy :1
         return{
-          count:state.count-decrementBy
+          count:state.count-action.incrementBy
         }
 
       case 'SET':
-        const setCount = !isNaN(action.count)?action.count:0
         return{
-          count:setCount
+          count:action.count
         }
 
       case 'RESET':
@@ -31,27 +28,35 @@ const store = createStore((state={count:100}, action) => {
  
 })
 
+const incrementCount = ({ incrementBy = 1 } = { }) => {
+  type:'INCREMENT',
+  incrementBy
+}
+
+const decrementCount = ({ decrementBy = 1 } = {}) => {
+  type:'DECREMENT',
+  decrementBy
+}
+
+const set = ({count=1}={}) => {
+  type:'SET',
+  count
+}
+const reset = () => {
+  type:'RESET'
+}
+
 store.subscribe(() => {
   const data = store.getState()
   console.log(data)
 })
 
-store.dispatch({
-  type:'INCREMENT',
-  incrementBy:100
-})
+store.dispatch(incrementCount())
+store.dispatch(incrementCount())
 
-store.dispatch({
-  type:'DECREMENT',
-  decrementBy: '50'
-})
+store.dispatch(decrementCount())
 
 
-store.dispatch({
-  type:'SET',
-  count: '1000'
-})
+store.dispatch(set({count:100}))
 
-store.dispatch({
-  type:'RESET'
-})
+store.dispatch(reset())
