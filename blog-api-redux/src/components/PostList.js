@@ -17,8 +17,8 @@ rederList(){
           <div className="description">
             <h2>{post.title}</h2>
             <p>{post.body}</p>
-            <div><UserHeader/></div>
           </div>
+          <div><UserHeader userId={post.userId}/></div>
         </div>
       </div>
     )
@@ -26,7 +26,6 @@ rederList(){
 }
 
   render(){
-    console.log(this.props.posts)
     return(
       <div className="ui relaxed divided list">
         {this.rederList()}
@@ -35,6 +34,6 @@ rederList(){
   }
 }
 
-const mapStateToProps = state => {return {posts: state.post}}
+const mapStateToProps = state => {return {posts: state.posts}}
 
 export default connect(mapStateToProps, {fetchPosts})(PostList)
