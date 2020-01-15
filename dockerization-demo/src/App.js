@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.  Adding more content to check volume map
+          Edit <code>src/App.js</code> and save to reload.  Adding more content to check volume map. Also this content shows up with compose file
         </p>
         <a
           className="App-link"
