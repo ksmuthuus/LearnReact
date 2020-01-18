@@ -23,10 +23,14 @@ class CommentBox extends Component{
           <h3> Enter a Comment</h3>
           <textarea onChange={this.handleChange} value={this.state.comment}/>
           <div>
-            <button>Comment</button>
+            <button className='btn btn-secondary btn-sm'>Comment</button>
           </div>
         </form>
-        <button className='fetchComments' onClick={this.props.getCommentAction}>Fetch</button>
+        <br/>
+        <div>
+        <button className='fetchComments btn btn-secondary btn-sm' onClick={this.props.getCommentAction}>Fetch</button>
+        </div>
+        
       </div>
     )
   }

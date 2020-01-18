@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {CREATE_COMMENT, FETCH_COMMENT} from 'actions/types'
+import {CREATE_COMMENT, FETCH_COMMENT, AUTH_STATUS} from 'actions/types'
 
 export const postCommentAction = function(comment){
   return {
@@ -17,5 +17,12 @@ export const getCommentAction = async function(comment){
   return({
     type: FETCH_COMMENT,
     payload: result.data
+  })
+}
+
+export const changeAuthStatus = function(isSignIn){
+  return({
+    type: AUTH_STATUS,
+    payload:isSignIn
   })
 }
