@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
+import {postCommentAction, getCommentAction} from 'actions'
 
 class CommentBox extends Component{
   
@@ -10,7 +12,7 @@ class CommentBox extends Component{
 
   handleSubmit = event => {
     event.preventDefault()
-    //TODO - Action creator
+    this.props.postCommentAction(this.state.comment)
     this.setState({comment:''})
   }
 
@@ -24,9 +26,10 @@ class CommentBox extends Component{
             <button>Comment</button>
           </div>
         </form>
+        <button className='fetchComments' onClick={this.props.getCommentAction}>Fetch</button>
       </div>
     )
   }
 }
 
-export default CommentBox
+export default connect(null, {postCommentAction, getCommentAction})(CommentBox)

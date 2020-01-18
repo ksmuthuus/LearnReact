@@ -1,15 +1,16 @@
 import {mount} from 'enzyme'
 import React from 'react'
 import CommentBox from 'components/CommentBox'
+import Root from 'Root'
 
 let wrapped
 beforeEach(() => {
-  wrapped = mount(<CommentBox/>)
+  wrapped = mount(<Root><CommentBox/></Root>)
 })
 
 it('Should render textarea and button',() => {
   expect(wrapped.find('textarea').length).toEqual(1)
-  expect(wrapped.find('button').length).toEqual(1)
+  expect(wrapped.find('button').length).toEqual(2)
 })
 
 describe('The text area',() => {

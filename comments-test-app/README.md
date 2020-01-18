@@ -1,3 +1,5 @@
+Created based on Udemy coure by Stephen Grider: https://resideo.udemy.com/course/react-redux-tutorial/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
